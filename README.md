@@ -1,4 +1,4 @@
-# SF-Calcs-and-Drilling-Wellfile-Scraper
+# SF-Calcs
 
 This program is inspired by the ISCWSA Error model and guidelines for caclculating errors of uncertainty in 
 
