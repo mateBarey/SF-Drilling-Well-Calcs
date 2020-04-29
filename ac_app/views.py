@@ -2209,16 +2209,13 @@ def download(request):
     path = os.path.join(BASE_DIR, 'static')
     os.chdir(path)
 
-    #ac_1 = request.session.get('ac_new', None)
     ac_1.to_csv('ac_new.csv')
     pyexcel.save_as(file_name='ac_new.csv', dest_file_name='ac_new.xlsx')
-    #file_h = pyexcel.save_book_as(array=ac_1, dest_file_name=r"C:\Users\cubasg\Desktop\My_Django_Stuff\practice\ac_tool\static\ac_1.csv")
     excel.make_response(pyexcel.get_book(file_name='ac_new.xlsx'), "xlsx", file_name="ac_new")
 
 def handson_table(request):
     return excel.make_response_from_a_table(AcFlaggedWell, 'handsontable.html')
-    # return excel.make_response_from_a_table(AcFlaggedWells, 'csv', 'results.html')
-    # this is working fine
+    
 
 def embed_handson_table_from_a_single_table(request):
     """Renders two table in a handsontable"""
@@ -2228,13 +2225,3 @@ def embed_handson_table_from_a_single_table(request):
         dest_embed=True)
     content.seek(0)
     return render(request,'ac_app/custom-handson-table.html',{'handsontable_content': content.read()})
-# note probably doesnt work because template is messed up fix template~!!!!! ****
-# def results(request):
-#     if  "GET" == request.method:
-#         ac_1 = request.session.get('ac_1', None)
-#         json = ac_1.to_json()
-#         context = {
-#                     'data':json,
-#                     'columns':columns
-#                   }
-#     return render(request,'ac_app/results.html',context) 
